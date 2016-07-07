@@ -47,6 +47,11 @@ public class FormA {
         secondName.addActionListener(actionListener);
     }
 
+    public boolean isOneWordInLine() {
+        return name.getText().split("[\\s]+").length > 1 || surname.getText().split("[\\s]+").length > 1 ||
+                secondName.getText().split("[\\s]+").length > 1;
+    }
+
     public boolean isNecessaryFieldsEmpty() {
         if (surname.getText().isEmpty()) {
             surname.requestFocus();

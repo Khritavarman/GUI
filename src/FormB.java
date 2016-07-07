@@ -79,6 +79,7 @@ public class FormB {
             person.setName(text[1]);
             person.setSecondName(text[2]);
         } catch (ArrayIndexOutOfBoundsException e1) {
+            person.setSecondName("");
         }
     }
 

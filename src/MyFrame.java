@@ -53,7 +53,12 @@ public class MyFrame extends JFrame {
     }
 
     public void switchToB () {
-        if (formA.isNecessaryFieldsEmpty()) {
+        if (formA.isOneWordInLine()) {
+            JOptionPane.showMessageDialog(formA.getRootPanel(),
+                    "Incorrect input",
+                    "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+        } else if (formA.isNecessaryFieldsEmpty()) {
             JOptionPane.showMessageDialog(formA.getRootPanel(),
                     "Type Name and Surname, please",
                     "Warning",
@@ -68,10 +73,8 @@ public class MyFrame extends JFrame {
                 setContentPane(formB.getRootPanel());
                 formB.getRootPanel().revalidate();
                 formB.getRootPanel().repaint();
-                formB.getFio().setText(formA.getSurname().getText() +  " " + formA.getName().getText()
-                        + " " + formA.getSecondName().getText());
-                /*formB.setPerson(formA.getPerson());
-                formB.fillForm();*/
+                formB.setPerson(formA.getPerson());
+                formB.fillForm();
             } else {
                 formA.getSecondName().requestFocus();
             }
@@ -79,13 +82,13 @@ public class MyFrame extends JFrame {
             setContentPane(formB.getRootPanel());
             formB.getRootPanel().revalidate();
             formB.getRootPanel().repaint();
-            formB.getFio().setText(formA.getSurname().getText() +  " " + formA.getName().getText()
-                    + " " + formA.getSecondName().getText());
+            formB.setPerson(formA.getPerson());
+            formB.fillForm();
         }
     }
 
     public void switchToA () {
-        String[] text = formB.getFio().getText().split("[\\s]+");
+        String[] text = formB.splitFio();
         if (text.length < 2){
             JOptionPane.showMessageDialog(formA.getRootPanel(),
                     "It seems, that you didn't type name or surname",
@@ -100,18 +103,14 @@ public class MyFrame extends JFrame {
             setContentPane(formA.getRootPanel());
             formA.getRootPanel().revalidate();
             formA.getRootPanel().repaint();
-            formA.getSurname().setText(text[0]);
-            formA.getName().setText(text[1]);
-            formA.getSecondName().setText("");
+            formA.setPerson(formB.getPerson());
+            formA.fillForm();
         } else {
             setContentPane(formA.getRootPanel());
             formA.getRootPanel().revalidate();
             formA.getRootPanel().repaint();
-            formA.getSurname().setText(text[0]);
-            formA.getName().setText(text[1]);
-            formA.getSecondName().setText(text[2]);
+            formA.setPerson(formB.getPerson());
+            formA.fillForm();
         }
-        /*formA.setPerson(formB.getPerson());
-        formA.fillForm();*/
     }
 }
