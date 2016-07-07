@@ -54,9 +54,9 @@ public class FormA {
 
     public boolean isNecessaryFieldsEmpty() {
         if (surname.getText().isEmpty()) {
-            surname.requestFocus();
+            surname.requestFocusInWindow();
         } else {
-            name.requestFocus();
+            name.requestFocusInWindow();
         }
         return surname.getText().isEmpty() || name.getText().isEmpty();
     }

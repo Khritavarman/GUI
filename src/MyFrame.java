@@ -76,7 +76,7 @@ public class MyFrame extends JFrame {
                 formB.setPerson(formA.getPerson());
                 formB.fillForm();
             } else {
-                formA.getSecondName().requestFocus();
+                formA.getSecondName().requestFocusInWindow();
             }
         } else {
             setContentPane(formB.getRootPanel());
