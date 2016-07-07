@@ -87,7 +87,7 @@ public class FormB {
         this.person = person;
     }
 
-    public void fillForm() {
+    public void fillForm() {l
         fio.setText(person.getSurname() +  " " + person.getName() + " " + person.getSecondName());
     }
 }
